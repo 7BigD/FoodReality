@@ -1,0 +1,9 @@
+{
+  "name": "food-reality-frontend",
+  "private": true,
+  "scripts": {
+    "dev:robot": "pnpm --filter robot-tablet dev",
+    "dev:store": "pnpm --filter store-tablet dev",
+    "dev": "pnpm --filter robot-tablet dev & pnpm --filter store-tablet dev"
+  }
+}

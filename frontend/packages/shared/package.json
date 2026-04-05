@@ -1,0 +1,11 @@
+{
+  "name": "@food-reality/shared",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "dependencies": {
+    "axios": "^1.7.0",
+    "mqtt": "^5.15.1"
+  }
+}

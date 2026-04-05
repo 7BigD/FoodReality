@@ -1,0 +1,37 @@
+services:
+  # ---- Backend API (FastAPI + SQLite) ----
+  - type: web
+    name: dianxiaoguai-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+
+  # ---- C端 Robot Tablet (React + Tailwind CDN) ----
+  - type: web
+    name: dianxiaoguai-robot
+    runtime: node
+    rootDir: frontend
+    buildCommand: npm install -g pnpm && pnpm install && pnpm --filter robot-tablet build
+    startCommand: npx serve apps/robot-tablet/dist -l $PORT -s
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: VITE_API_BASE
+        sync: false  # 手动填写后端 URL，如 https://dianxiaoguai-api.onrender.com
+
+  # ---- B端 Store Tablet (React + Ant Design) ----
+  - type: web
+    name: dianxiaoguai-store
+    runtime: node
+    rootDir: frontend
+    buildCommand: npm install -g pnpm && pnpm install && pnpm --filter store-tablet build
+    startCommand: npx serve apps/store-tablet/dist -l $PORT -s
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: VITE_API_BASE
+        sync: false  # 手动填写后端 URL，如 https://dianxiaoguai-api.onrender.com

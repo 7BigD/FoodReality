@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip3 install:*)",
+      "Bash(python3:*)",
+      "Bash(curl -s http://localhost:8000/)",
+      "Bash(curl -s http://localhost:8000/api/store)",
+      "Bash(curl -s http://localhost:8000/api/products)",
+      "Bash(curl -s http://localhost:8000/api/glasses)",
+      "Bash(lsof -ti:8000)",
+      "Bash(xargs kill:*)",
+      "Bash(curl -s -X POST http://localhost:8000/api/members/register -H \"Content-Type: application/json\" -d '{\"phone\":\"13800001111\",\"name\":\"测试用户\"}')",
+      "Bash(curl -s -X POST http://localhost:8000/api/queue/take-number -H \"Content-Type: application/json\" -d '{\"member_id\":1}')",
+      "Bash(npm install:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm approve-builds:*)",
+      "Bash(pnpm --filter robot-tablet dev)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
+      "Bash(lsof -ti:5173)",
+      "Bash(pnpm --filter robot-tablet add @ant-design/icons)",
+      "Bash(pnpm --filter store-tablet add @ant-design/icons)",
+      "Bash(echo \"Not found in robot\" ls node_modules/.pnpm/@ant-design+icons*/node_modules/@ant-design/icons)",
+      "Bash(lsof -ti:5174)",
+      "Bash(pnpm --filter store-tablet dev)",
+      "Bash(curl -s -o /dev/null -w \"store-tablet HTTP status: %{http_code}\\\\n\" http://localhost:5174)",
+      "Bash(curl:*)",
+      "WebFetch(domain:unsplash.com)",
+      "WebSearch",
+      "WebFetch(domain:source.unsplash.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:images.unsplash.com)",
+      "WebFetch(domain:ithelp.ithome.com.tw)",
+      "Bash(pnpm:*)",
+      "Bash(kill 58833)",
+      "Bash(git add:*)"
+    ]
+  }
+}

@@ -2,7 +2,7 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .database import engine, Base
-from .routers import member, queue, glasses, store, product, sample, game, dashboard
+from .routers import member, queue, glasses, store, product, sample, game, dashboard, leqi
 
 # 日志配置
 logging.basicConfig(
@@ -38,6 +38,7 @@ app.include_router(product.router)
 app.include_router(sample.router)
 app.include_router(game.router)
 app.include_router(dashboard.router)
+app.include_router(leqi.router)
 
 
 @app.get("/")

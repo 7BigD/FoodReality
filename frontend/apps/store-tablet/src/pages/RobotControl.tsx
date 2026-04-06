@@ -23,7 +23,7 @@ const defaultConfig: MqttConfig = {
   clientId: `store-tablet-${Math.random().toString(16).slice(2, 8)}`,
 }
 
-// 指令字符映射：W=前进 S=后退 Q=左转 E=右转 Z=停止 O=开样品门 X=停止音频
+// 指令字符映射：W=前进 S=后退 Q=左转 E=右转 Z=停止 O=开样品门 X=停止音频 C=播放音频
 const CMD_MAP = {
   forward:  'W',
   backward: 'S',
@@ -32,6 +32,7 @@ const CMD_MAP = {
   stop:     'Z',
   open_door: 'O',
   stop_audio: 'X',
+  play_audio: 'C',
 } as const
 
 type Direction = keyof typeof CMD_MAP
@@ -174,6 +175,7 @@ export default function RobotControl() {
       z: 'stop',     Z: 'stop',     ' ': 'stop',
       o: 'open_door',  O: 'open_door',
       x: 'stop_audio', X: 'stop_audio',
+      c: 'play_audio', C: 'play_audio',
     }
     const onKeyDown = (e: KeyboardEvent) => {
       if ((e.target as HTMLElement).tagName === 'INPUT') return
@@ -325,10 +327,20 @@ export default function RobotControl() {
               <div>停止音频</div>
               <div style={{ fontSize: 10, fontWeight: 'normal', color: '#888' }}>键盘 X</div>
             </Button>
+            <Button
+              disabled={connStatus !== 'connected'}
+              type="primary"
+              style={{ height: 56, width: 120, borderRadius: 12, fontWeight: 'bold', fontSize: 13, background: connStatus === 'connected' ? '#52c41a' : undefined, borderColor: '#52c41a' }}
+              icon={<span style={{ fontSize: 18, marginRight: 4 }}>🔊</span>}
+              onClick={() => handleMove('play_audio')}
+            >
+              <div>播放音频</div>
+              <div style={{ fontSize: 10, fontWeight: 'normal', color: 'rgba(255,255,255,0.7)' }}>键盘 C</div>
+            </Button>
           </Space>
           <Divider style={{ margin: '12px 0 8px' }} />
           <Text type="secondary" style={{ fontSize: 12, display: 'block', textAlign: 'center' }}>
-            W=前进 S=后退 Q=左转 E=右转 Z/空格=停止
+            W=前进 S=后退 Q=左转 E=右转 Z/空格=停止 C=播放 X=停止音频
           </Text>
         </Card>
 

@@ -16,7 +16,7 @@ def seed():
                 phone="0755-86001234",
                 business_hours="10:00 - 22:00",
                 # 真实港式茶餐厅门面
-                logo_url="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=200&h=200&fit=crop&q=80",
+                logo_url="https://qcloud.dpfile.com/pc/u9-MxzNlf76gg0itio3ba6ipYjQblhRAy3tDBLHKfDL7azFDfoul2nA4wyxcK7YU.jpg",
                 # 港式茶餐厅内部暖色调氛围
                 cover_url="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1024&h=600&fit=crop&q=80",
             )
